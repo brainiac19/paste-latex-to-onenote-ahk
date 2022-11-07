@@ -8,52 +8,38 @@ preferred_font := ""
 
 ^Space::
 ;save clipboard
-cp := A_Clipboard
-cpl := StrLen(cp)
+cp := ClipboardAll
+cpl := StrLen(Clipboard)
+
+;create env
+Send {Enter}1{Enter}{Left}{BS}^+n
 
 ;latex mode
-Send !=
-Send Ⓣ
-Send {BS}
-
-;split line
-Send {Enter}
-Send {Left}
+Send !=Ⓣ
 
 ;paste and select
-Send ^v
-Send {LShift Down}
-Send {Left %cpl%}
-Send {LShift Up}
+Send ^v ^a
 
 ;convert to latex
-Send !=
-Send {Right}
-Send {Enter}
-Send {Delete}
-Send {Left}
+Send !={Right}{Enter}
+
+;copy equation
+Send {Left}^a{Shift Down}{Left}{Shift Up}^c
+
+;undo
+Send {LCtrl Down}{z 12}{LCtrl Up}
+
+;paste equation
+Send ^v{Right}
 
 ;change font
 if (preferred_font != "")
 {
-Send ！
-Send {Left}
-Send {LAlt}
-Send hff
+Send ！{Left}{LAlt}hff
 Send {text}%preferred_font%
-Send {Enter}
-Send {Right}
-Send {BS}
+Send {Enter}{Right}{BS}
 }
 
-;restore line
-Send {LShift Down}
-Send {Right}
-Send {LShift Up}
-Send {Delete}
-Send {Right}
-Send {Left}
-
-A_Clipboard := cp
+Clipboard := cp
 
 Return
