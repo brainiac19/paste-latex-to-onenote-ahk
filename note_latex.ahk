@@ -7,7 +7,15 @@ preferred_font := ""
 
 ^Space::
 ;save clipboard
-cpl := StrLen(A_Clipboard)
+cp := A_Clipboard
+cpl := StrLen(cp)
+
+;latex mode
+SendInput !=
+SendInput {text}24c9
+SendInput {Space}
+SendInput !x
+SendInput {BS}
 
 ;split line
 SendInput {Enter}
@@ -19,13 +27,11 @@ SendInput {LShift Down}
 SendInput {Left %cpl%}
 SendInput {LShift Up}
 
-;convert to latex, reset cursor
+;convert to latex
 SendInput !=
 SendInput {Right}
 SendInput {Enter}
 SendInput {Delete}
-SendInput {Left}
-SendInput {Right}
 SendInput {Left}
 
 ;change font
@@ -35,7 +41,7 @@ SendInput ！
 SendInput {Left}
 SendInput {LAlt}
 SendInput hff
-SendInput %preferred_font%
+SendInput {text}%preferred_font%
 SendInput {Enter}
 SendInput {Right}
 SendInput {BS}
@@ -46,5 +52,9 @@ SendInput {LShift Down}
 SendInput {Right}
 SendInput {LShift Up}
 SendInput {Delete}
+SendInput {Right}
+SendInput {Left}
+
+A_Clipboard := cp
 
 Return
