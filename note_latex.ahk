@@ -11,6 +11,9 @@ preferred_font := ""
 cp := ClipboardAll
 cpl := StrLen(Clipboard)
 
+;attempt blank box
+Send 1!{Down}
+
 ;create env
 Send {Enter}1{Enter}{Left}{BS}^+n
 
@@ -27,7 +30,9 @@ Send !={Right}{Enter}
 Send {Left}^a{Shift Down}{Left}{Shift Up}^c
 
 ;undo
-Send {LCtrl Down}{z 12}{LCtrl Up}
+Send {LCtrl Down}{z 13}
+Sleep 500
+Send {LCtrl Up}
 
 ;paste equation
 Send ^v{Right}
