@@ -2,6 +2,7 @@
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+SetKeyDelay -1
 
 preferred_font := ""
 
@@ -11,49 +12,47 @@ cp := A_Clipboard
 cpl := StrLen(cp)
 
 ;latex mode
-SendInput !=
-SendInput {text}24c9
-SendInput {Space}
-SendInput !x
-SendInput {BS}
+Send !=
+Send Ⓣ
+Send {BS}
 
 ;split line
-SendInput {Enter}
-SendInput {Left}
+Send {Enter}
+Send {Left}
 
 ;paste and select
-SendInput ^v
-SendInput {LShift Down}
-SendInput {Left %cpl%}
-SendInput {LShift Up}
+Send ^v
+Send {LShift Down}
+Send {Left %cpl%}
+Send {LShift Up}
 
 ;convert to latex
-SendInput !=
-SendInput {Right}
-SendInput {Enter}
-SendInput {Delete}
-SendInput {Left}
+Send !=
+Send {Right}
+Send {Enter}
+Send {Delete}
+Send {Left}
 
 ;change font
 if (preferred_font != "")
 {
-SendInput ！
-SendInput {Left}
-SendInput {LAlt}
-SendInput hff
-SendInput {text}%preferred_font%
-SendInput {Enter}
-SendInput {Right}
-SendInput {BS}
+Send ！
+Send {Left}
+Send {LAlt}
+Send hff
+Send {text}%preferred_font%
+Send {Enter}
+Send {Right}
+Send {BS}
 }
 
 ;restore line
-SendInput {LShift Down}
-SendInput {Right}
-SendInput {LShift Up}
-SendInput {Delete}
-SendInput {Right}
-SendInput {Left}
+Send {LShift Down}
+Send {Right}
+Send {LShift Up}
+Send {Delete}
+Send {Right}
+Send {Left}
 
 A_Clipboard := cp
 
