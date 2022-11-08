@@ -38,4 +38,12 @@ Send {Delete}
 Send ^v
 Send {Right}
 
+;change font
+if (preferred_font != "")
+{
+Send ！{Left}{LAlt}hff
+Send {text}%preferred_font%
+Send {Enter}{Right}{BS}
+}
+
 Return
