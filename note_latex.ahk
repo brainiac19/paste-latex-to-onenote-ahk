@@ -8,8 +8,11 @@ preferred_font := ""
 
 ^Space::
 
+;save clipboard
+cb := ClipboardAll
+
 ;new env
-Send ^n
+Send ^+!n
 Send !{Down}
 
 ;latex mode
@@ -30,13 +33,26 @@ Send {Left} ^a
 Send {LShift Down}{Left 2}{LShift Up}
 Send ^c
 
-;del page
+;del page and return
 Send ^+a
 Send {Delete}
+Send ^{PgUp}
 
 ;paste equation
 Send ^v
 Send {Right}
+
+;restore clipboard
+Loop
+{
+	if DllCall("user32\OpenClipboard", "Ptr",0)
+	{
+		DllCall("user32\CloseClipboard")
+		break
+	}
+	Sleep, 50
+}
+Clipboard := cb
 
 ;change font
 if (preferred_font != "")
@@ -45,5 +61,6 @@ Send ！{Left}{LAlt}hff
 Send {text}%preferred_font%
 Send {Enter}{Right}{BS}
 }
+
 
 Return
