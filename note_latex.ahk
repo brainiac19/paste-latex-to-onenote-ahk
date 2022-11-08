@@ -7,44 +7,35 @@ SetKeyDelay -1
 preferred_font := ""
 
 ^Space::
-;save clipboard
-cp := ClipboardAll
-cpl := StrLen(Clipboard)
 
-;attempt blank box
-Send 1!{Down}
-
-;create env
-Send {Enter}1{Enter}{Left}{BS}^+n
+;new env
+Send ^n
+Send !{Down}
 
 ;latex mode
-Send !=Ⓣ
+Send !=
+Send Ⓣ
 
-;paste and select
-Send ^v ^a
+;paste latex
+Send ^v
+Send {Text}\;
+Send ^a
 
 ;convert to latex
-Send !={Right}{Enter}
+Send !=
+Send {Right}{Enter}
 
 ;copy equation
-Send {Left}^a{Shift Down}{Left}{Shift Up}^c
+Send {Left} ^a
+Send {LShift Down}{Left 2}{LShift Up}
+Send ^c
 
-;undo
-Send {LCtrl Down}{z 13}
-Sleep 500
-Send {LCtrl Up}
+;del page
+Send ^+a
+Send {Delete}
 
 ;paste equation
-Send ^v{Right}
-
-;change font
-if (preferred_font != "")
-{
-Send ！{Left}{LAlt}hff
-Send {text}%preferred_font%
-Send {Enter}{Right}{BS}
-}
-
-Clipboard := cp
+Send ^v
+Send {Right}
 
 Return
