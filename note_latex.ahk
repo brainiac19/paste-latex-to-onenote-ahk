@@ -43,6 +43,7 @@ Send {Delete}
 
 ;paste equation
 Send ^v
+Send {Ctrl}{k}
 Send {Right}
 
 ;restore clipboard
