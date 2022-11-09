@@ -36,7 +36,7 @@ Send ^c
 ;del page and return
 Send ^+a
 Send {Delete}
-Send ^{PgUp}
+Send !{Left}
 
 ;paste equation
 Send ^v
