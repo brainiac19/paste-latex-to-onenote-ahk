@@ -9,10 +9,10 @@ preferred_font := ""
 ^Space::
 
 ;save clipboard
-cb := ClipboardAll
+;cb := ClipboardAll
 
 ;copy
-;Send ^c
+Send ^c
 
 ;new env
 Send ^+!n
@@ -46,16 +46,7 @@ Send ^v
 Send {Right}
 
 ;restore clipboard
-Loop
-{
-	if DllCall("user32\OpenClipboard", "Ptr",0)
-	{
-		DllCall("user32\CloseClipboard")
-		break
-	}
-	Sleep, 50
-}
-Clipboard := cb
+;Clipboard := cb
 
 ;change font
 if (preferred_font != "")
