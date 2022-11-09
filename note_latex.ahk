@@ -2,7 +2,7 @@
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-SetKeyDelay -1
+SetKeyDelay 10
 
 preferred_font := ""
 
@@ -10,6 +10,9 @@ preferred_font := ""
 
 ;save clipboard
 cb := ClipboardAll
+
+;copy
+;Send ^c
 
 ;new env
 Send ^+!n
@@ -33,10 +36,10 @@ Send {Left} ^a
 Send {LShift Down}{Left 2}{LShift Up}
 Send ^c
 
-;del page and return
+;select page, return, delete
 Send ^+a
+Send ^{PgUp}
 Send {Delete}
-Send !{Left}
 
 ;paste equation
 Send ^v
