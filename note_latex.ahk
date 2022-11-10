@@ -8,6 +8,13 @@ preferred_font := ""
 
 ^Space::
 
+;check active window
+SetTitleMatchMode RegEx
+If not WinActive("ahk_exe i)\\onenote\.exe$")
+{
+Return
+}
+
 ;save clipboard
 ;cb := ClipboardAll
 
