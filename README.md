@@ -3,6 +3,8 @@
  
  If you can, buy one of those plugins, those are better.
  
+ Does not support MAC cuz I don't know the corresponding hotkeys.
+ 
  I've been constantly running into situations where it might not work and been working around problems. And since it's just an ahk script, various user environment might cause different outcome. It's advised to test it in a new section to see it if it works, new page is not enough!
 
 # Usage
