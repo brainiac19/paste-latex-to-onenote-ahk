@@ -2,7 +2,7 @@
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Event  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-SetKeyDelay 20
+SetKeyDelay 10
 
 preferred_font := ""
 
@@ -14,6 +14,9 @@ If not WinActive("ahk_exe i)\\onenote\.exe$")
 {
 Return
 }
+
+;block input
+BlockInput On
 
 ;save clipboard
 ;cb := ClipboardAll
@@ -46,6 +49,7 @@ Send ^c
 ;select page, return, delete
 Send ^+a
 Send ^{PgUp}
+Sleep 20
 Send {Delete}
 
 ;paste equation
@@ -64,5 +68,7 @@ Send {text}%preferred_font%
 Send {Enter}{Right}{BS}
 }
 
+;remove block
+BlockInput Off
 
 Return
