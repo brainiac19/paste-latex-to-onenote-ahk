@@ -19,6 +19,7 @@
  - SLOW. It needs a lot of extra steps to make sure other stuff arn't messed up.
  - Does not support some multi-line environments such as {cases}.
  - The Latex String cannot be multilined too.
+ - Unpin the search panel before using, it can't do stuff when it's pinned.
  - Parts of the string might be escaped by Onenote and thus cannot be translated to equation.
  - I wanted to restore clipboard after pasting stuff but never got it to work on the latest win11.
 
